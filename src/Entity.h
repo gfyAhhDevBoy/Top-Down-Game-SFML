@@ -1,3 +1,6 @@
+#ifndef ENTITY_H
+#define ENTITY_H
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -29,3 +32,4 @@ class Entity : sf::Sprite {
   sf::Vector2i position;
   sf::Texture tex;
 };
+#endif
