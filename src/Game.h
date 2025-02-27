@@ -6,19 +6,30 @@
 
 #include "util/Input.h"
 
-class Game {
-  typedef sf::Keyboard::Key Keys;
+#include "GameObject.h"
 
- public:
-  void init();
-  void update();
-  void render();
+class Game
+{
+    typedef sf::Keyboard::Key Keys;
 
-  bool should_close();
+  public:
+    void init();
+    void run();
 
- private:
-  void process_events();
+    inline bool is_open()
+    {
+        return window.isOpen();
+    };
 
-  sf::RenderWindow window;
+  private:
+    void process_events();
+    void update();
+    void render();
+
+    GameObject *test;
+
+    float deltaTime;
+
+    sf::RenderWindow window;
 };
 #endif

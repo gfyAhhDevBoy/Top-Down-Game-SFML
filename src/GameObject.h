@@ -2,19 +2,31 @@
 #define GAMEOBJECT_H
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/Graphics/Texture.hpp>
 
-class GameObject : sf::Sprite {
-public:
-  GameObject(sf::Vector2i initial_pos, sf::Texture text)
-      : pos(initial_pos), tex(text) {}
+class GameObject : sf::Sprite
+{
+  public:
+    GameObject(sf::Vector2i initial_pos, sf::Texture text) : pos(initial_pos), tex(text), sf::Sprite(tex)
+    {
+    }
 
-private:
-  sf::Texture tex;
-  sf::Vector2i pos;
+    GameObject(int x, int y, sf::Texture text) : pos(x, y), tex(text), sf::Sprite(tex)
+    {
+    }
 
-  void update();
-  void render(sf::RenderTarget);
+    void set_pos(int x, int y);
+    void set_pos(sf::Vector2i pos);
+
+    void update(float);
+    void render(sf::RenderWindow &);
+
+    inline sf::Vector2i get_pos()
+    {
+        return pos;
+    };
+
+  private:
+    sf::Texture tex;
+    sf::Vector2i pos;
 };
 #endif
