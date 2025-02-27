@@ -16,6 +16,8 @@ class GameObject : sf::Sprite
 
     void set_pos(int x, int y);
     void set_pos(sf::Vector2i pos);
+    void move(int x, int y);
+    void move(sf::Vector2i pos);
 
     void update(float);
     void render(sf::RenderWindow &);

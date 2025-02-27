@@ -19,3 +19,15 @@ void GameObject::set_pos(sf::Vector2i pos)
 {
     this->pos = pos;
 }
+
+void GameObject::move(int x, int y)
+{
+    pos.x += x;
+    pos.y += y;
+}
+
+void GameObject::move(sf::Vector2i pos)
+{
+    this->pos.x = pos.x;
+    this->pos.y = pos.y;
+}

@@ -2,5 +2,7 @@
 #define PLAYER_H
 #include "GameObject.h"
 
-class Character : GameObject {};
+class Character : GameObject
+{
+};
 #endif
