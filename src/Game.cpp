@@ -2,7 +2,7 @@
 
 void Game::init()
 {
-    window.create(sf::VideoMode({800u, 600u}), "Game");
+    window.create(sf::VideoMode({800u, 600u}), "Game", sf::Style::Default);
 
     window.setFramerateLimit(60);
 
