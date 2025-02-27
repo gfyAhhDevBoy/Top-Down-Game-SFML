@@ -2,8 +2,8 @@
 #define GAME_H
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <optional>
 
-#include "Entity.h"
 #include "util/Input.h"
 
 class Game {

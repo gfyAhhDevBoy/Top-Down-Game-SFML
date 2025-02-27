@@ -1,6 +1,4 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
-class GameObject {
-
-};
+class GameObject {};
 #endif
