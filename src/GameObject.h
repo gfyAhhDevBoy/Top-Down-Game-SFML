@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-class GameObject : sf::Sprite
+class GameObject : public sf::Sprite
 {
   public:
     GameObject(sf::Vector2i initial_pos, sf::Texture text) : pos(initial_pos), tex(text), sf::Sprite(tex)
@@ -19,16 +19,22 @@ class GameObject : sf::Sprite
     void move(int x, int y);
     void move(sf::Vector2i pos);
 
-    void update(float);
-    void render(sf::RenderWindow &);
+    void set_current_texture(sf::Texture);
+
+    virtual void update(float);
+    virtual void render(sf::RenderWindow &);
 
     inline sf::Vector2i get_pos()
     {
         return pos;
     };
 
+    virtual ~GameObject() = default;
+
   private:
     sf::Texture tex;
+
+  protected:
     sf::Vector2i pos;
 };
 #endif
