@@ -4,11 +4,6 @@ void Game::init()
 {
     window.create(sf::VideoMode({800u, 600u}), "Game", sf::Style::Resize | sf::Style::Close);
     window.setFramerateLimit(60);
-
-    sf::Texture texture;
-    texture.loadFromFile("res/test.png");
-
-    test = new GameObject(100, 100, texture);
 }
 
 void Game::run()
@@ -44,8 +39,6 @@ void Game::process_events()
 void Game::render()
 {
     this->window.clear(sf::Color::Black);
-
-    test->render(this->window);
 
     this->window.display();
 }
