@@ -2,6 +2,7 @@
 
 void GameObject::update(float dt)
 {
+    update_func(dt);
 }
 
 void GameObject::render(sf::RenderWindow &target)

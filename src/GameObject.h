@@ -3,38 +3,47 @@
 
 #include <SFML/Graphics.hpp>
 
+typedef void (*update_callback_function)(float);
+
 class GameObject : public sf::Sprite
 {
   public:
-    GameObject(sf::Vector2i initial_pos, sf::Texture text) : pos(initial_pos), tex(text), sf::Sprite(tex)
+    GameObject(sf::Vector2i initial_pos, sf::Texture text, update_callback_function ufunc)
+        : pos(initial_pos), tex(text), sf::Sprite(tex), update_func(ufunc)
     {
     }
 
-    GameObject(int x, int y, sf::Texture text) : pos(x, y), tex(text), sf::Sprite(tex)
+    GameObject(int x, int y, sf::Texture text, update_callback_function ufunc)
+        : pos(x, y), tex(text), sf::Sprite(tex), update_func(ufunc)
     {
     }
 
-    void set_pos(int x, int y);
-    void set_pos(sf::Vector2i pos);
-    void move(int x, int y);
-    void move(sf::Vector2i pos);
+    GameObject(int x, int y, sf::Texture text) : pos(x, y), tex(text)
+    {
+    }
+
+    inline void set_pos(int x, int y);
+    inline void set_pos(sf::Vector2i pos);
+    inline void move(int x, int y);
+    inline void move(sf::Vector2i pos);
 
     void set_current_texture(sf::Texture);
 
-    virtual void update(float);
-    virtual void render(sf::RenderWindow &);
-
-    inline sf::Vector2i get_pos()
+    inline void set_update_func(update_callback_function ufunc)
     {
-        return pos;
+        update_func = ufunc;
     };
+
+    virtual void update(float);
+    void render(sf::RenderWindow &);
 
     virtual ~GameObject() = default;
 
+  protected:
+    update_callback_function update_func;
+    sf::Vector2i pos;
+
   private:
     sf::Texture tex;
-
-  protected:
-    sf::Vector2i pos;
 };
 #endif
