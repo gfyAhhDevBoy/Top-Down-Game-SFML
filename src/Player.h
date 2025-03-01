@@ -7,15 +7,14 @@ class Player : public GameObject
 {
   public:
     Player() = default;
-    Player(int x, int y, sf::Texture text) : GameObject(x, y, text)
-    {
-    }
+    Player(float x, float y, sf::Texture *text);
 
-    void update(float dt) override;
-    void animate();
+    void update(float dt);
 
   private:
-    sf::Texture texture_atlas;
+    void animate();
+
+    sf::Sprite sprite;
 };
 
 #endif

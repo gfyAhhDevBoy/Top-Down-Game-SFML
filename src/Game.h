@@ -19,7 +19,7 @@ class Game
 
     inline bool is_open()
     {
-        return window.isOpen();
+        return window->isOpen();
     };
 
   private:
@@ -29,6 +29,6 @@ class Game
 
     float deltaTime;
 
-    sf::RenderWindow window;
+    sf::RenderWindow *window;
 };
 #endif
