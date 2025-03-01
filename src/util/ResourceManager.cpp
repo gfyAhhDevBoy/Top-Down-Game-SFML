@@ -11,11 +11,11 @@ const std::vector<std::string> ResourceManager::SOUND_FILE_EXTENSIONS = {"wav"};
 sf::Texture *ResourceManager::get_texture(std::string &filepath)
 {
     // Check if already present
-    for (auto e : texture_map)
+    for (auto b = texture_map.begin(); b != texture_map.end(); ++b)
     {
-        if (e.first == filepath)
+        if (b->first == filepath)
         {
-            return e.second;
+            return b->second;
         }
     }
 
@@ -75,11 +75,11 @@ size_t ResourceManager::get_texture_count()
 
 sf::Font *ResourceManager::get_font(std::string &filepath)
 {
-    for (auto e : font_map)
+    for (auto b = font_map.begin(); b != font_map.end(); ++b)
     {
-        if (e.first == filepath)
+        if (b->first == filepath)
         {
-            return e.second;
+            return b->second;
         }
     }
 
@@ -137,11 +137,11 @@ size_t ResourceManager::get_font_count()
 
 sf::SoundBuffer *ResourceManager::get_soundbuffer(std::string &filepath)
 {
-    for (auto e : sound_map)
+    for (auto b = sound_map.begin(); b != sound_map.end(); ++b)
     {
-        if (e.first == filepath)
+        if (b->first == filepath)
         {
-            return e.second;
+            return b->second;
         }
     }
 
