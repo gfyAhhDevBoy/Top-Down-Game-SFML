@@ -18,7 +18,7 @@ class GameObject : public sf::Sprite
     {
     }
 
-    GameObject(int x, int y, sf::Texture text) : pos(x, y), tex(text)
+    GameObject(int x, int y, sf::Texture text) : pos(x, y), tex(tex), sf::Sprite(text)
     {
     }
 

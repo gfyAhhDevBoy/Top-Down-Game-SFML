@@ -2,11 +2,11 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "GCC 14.2.0 x86_64-w64-mingw32",
+            "name": "WinBuild",
             "displayName": "GCC 14.2.0 x86_64-w64-mingw32",
             "description": "Using compilers: C = C:\\mingw64\\bin\\gcc.exe, CXX = C:\\mingw64\\bin\\g++.exe",
             "generator": "MinGW Makefiles",
-            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
                 "CMAKE_C_COMPILER": "C:/mingw64/bin/gcc.exe",

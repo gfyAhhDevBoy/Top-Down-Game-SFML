@@ -39,6 +39,5 @@ void Game::process_events()
 void Game::render()
 {
     this->window.clear(sf::Color::Black);
-
     this->window.display();
 }

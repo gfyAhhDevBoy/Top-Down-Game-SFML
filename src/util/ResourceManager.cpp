@@ -8,7 +8,7 @@ const std::vector<std::string> ResourceManager::TEXTURE_FILE_EXTENSIONS = {"png"
 const std::vector<std::string> ResourceManager::FONT_FILE_EXTENSIONS = {"ttf"};
 const std::vector<std::string> ResourceManager::SOUND_FILE_EXTENSIONS = {"wav"};
 
-sf::Texture *ResourceManager::get_texture(std::string &filepath)
+sf::Texture *ResourceManager::get_texture(const std::string &filepath)
 {
     // Check if already present
     for (auto b = texture_map.begin(); b != texture_map.end(); ++b)
@@ -32,7 +32,7 @@ sf::Texture *ResourceManager::get_texture(std::string &filepath)
     return texture_map[filepath];
 }
 
-void ResourceManager::preload_textures(std::string &folder, bool recursive)
+void ResourceManager::preload_textures(const std::string &folder, bool recursive)
 {
     if (recursive)
     {
@@ -73,7 +73,7 @@ size_t ResourceManager::get_texture_count()
     return texture_map.size();
 }
 
-sf::Font *ResourceManager::get_font(std::string &filepath)
+sf::Font *ResourceManager::get_font(const std::string &filepath)
 {
     for (auto b = font_map.begin(); b != font_map.end(); ++b)
     {
@@ -96,7 +96,7 @@ sf::Font *ResourceManager::get_font(std::string &filepath)
     return font_map[filepath];
 }
 
-void ResourceManager::preload_fonts(std::string &folder, bool recursive)
+void ResourceManager::preload_fonts(const std::string &folder, bool recursive)
 {
     if (recursive)
     {
@@ -135,7 +135,7 @@ size_t ResourceManager::get_font_count()
     return font_map.size();
 }
 
-sf::SoundBuffer *ResourceManager::get_soundbuffer(std::string &filepath)
+sf::SoundBuffer *ResourceManager::get_soundbuffer(const std::string &filepath)
 {
     for (auto b = sound_map.begin(); b != sound_map.end(); ++b)
     {
@@ -158,7 +158,7 @@ sf::SoundBuffer *ResourceManager::get_soundbuffer(std::string &filepath)
     return sound_map[filepath];
 }
 
-void ResourceManager::preload_soundbuffers(std::string &folder, bool recursive)
+void ResourceManager::preload_soundbuffers(const std::string &folder, bool recursive)
 {
     if (recursive)
     {

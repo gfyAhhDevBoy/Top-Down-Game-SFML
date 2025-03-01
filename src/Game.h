@@ -5,6 +5,7 @@
 #include <optional>
 
 #include "util/Input.h"
+#include "util/ResourceManager.h"
 
 #include "GameObject.h"
 
@@ -25,8 +26,6 @@ class Game
     void process_events();
     void update();
     void render();
-
-    GameObject *test;
 
     float deltaTime;
 

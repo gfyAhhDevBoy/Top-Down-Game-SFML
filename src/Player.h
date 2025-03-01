@@ -7,19 +7,15 @@ class Player : public GameObject
 {
   public:
     Player() = default;
-    Player(int x, int y, sf::Texture text, int framew, int frameh, int n)
-        : GameObject(x, y, text), texture_atlas(text), frame_height(frameh), frame_width(framew), frames(n)
+    Player(int x, int y, sf::Texture text) : GameObject(x, y, text)
     {
-        texture_height = texture_atlas.getSize().y;
-        texture_width = texture_atlas.getSize().x;
     }
 
     void update(float dt) override;
     void animate();
 
   private:
-    int texture_height, texture_width, frame_height, frame_width, frames;
     sf::Texture texture_atlas;
 };
 
-#endif // !PLAYER_H
+#endif
