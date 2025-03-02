@@ -5,11 +5,12 @@ void Game::init()
     window = new sf::RenderWindow(sf::VideoMode({800u, 600u}), "Game", sf::Style::Resize | sf::Style::Close);
     window->setFramerateLimit(60);
 
+    // To Do fix file paths on windows
     ResourceManager::preload_textures("res");
     player = new Player(500, 500, ResourceManager::get_texture("res\\player.png"));
-    test = new GameObject(200, 200, ResourceManager::get_texture("res\\idk.png"));
+    test = new GameObject(200, 200, ResourceManager::get_texture("res/idk.png"));
 
-    gameobjs.push_back(player);
+    // gameobjs.push_back(player);
     gameobjs.push_back(test);
 }
 
@@ -25,7 +26,7 @@ void Game::run()
 
 void Game::update()
 {
-    player->update(deltatime);
+    // player->update(deltatime);
 }
 
 void Game::process_events()
