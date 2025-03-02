@@ -15,6 +15,7 @@ sf::Texture *ResourceManager::get_texture(const std::string &filepath)
     {
         if (b->first == filepath)
         {
+            std::cout << "Texture already loaded\n";
             return b->second;
         }
     }
@@ -26,6 +27,8 @@ sf::Texture *ResourceManager::get_texture(const std::string &filepath)
         std::cerr << "Failed to load texture at " << filepath << std::endl;
         return nullptr;
     }
+    std::cout << "Texture loaded at " << filepath << std::endl;
+    ;
 
     texture_map[filepath] = texture;
 
@@ -40,13 +43,18 @@ void ResourceManager::preload_textures(const std::string &folder, bool recursive
         {
             std::stringstream ss;
             ss << file;
-            // if (contains(ss.str().substr(ss.str().length() - 4, 3), TEXTURE_FILE_EXTENSIONS))
-            if (contains(ss.str().substr(ss.str().find(".") + 1), TEXTURE_FILE_EXTENSIONS))
+            if (contains(ss.str().substr(ss.str().length() - 4, 3), TEXTURE_FILE_EXTENSIONS))
+            // if (contains(ss.str().substr(ss.str().find(".") + 1), TEXTURE_FILE_EXTENSIONS))
             {
                 sf::Texture *texture = new sf::Texture();
 
-                texture->loadFromFile(ss.str().substr(1, ss.str().length() - 2));
+                if (!(texture->loadFromFile(ss.str().substr(1, ss.str().length() - 2))))
+                {
+                    std::cerr << "Failed to load Texture at " << ss.str() << std::endl;
+                    continue;
+                }
                 texture_map[ss.str().substr(1, ss.str().length() - 2)] = texture;
+                std::cout << "Loaded texture " << ss.str() << std::endl;
             }
         }
     }
@@ -56,13 +64,18 @@ void ResourceManager::preload_textures(const std::string &folder, bool recursive
         {
             std::stringstream ss;
             ss << file;
-            // if (contains(ss.str().substr(ss.str().length() - 4, 3), TEXTURE_FILE_EXTENSIONS))
-            if (contains(ss.str().substr(ss.str().find(".") + 1), TEXTURE_FILE_EXTENSIONS))
+            if (contains(ss.str().substr(ss.str().length() - 4, 3), TEXTURE_FILE_EXTENSIONS))
+            // if (contains(ss.str().substr(ss.str().find(".") + 1), TEXTURE_FILE_EXTENSIONS))
             {
                 sf::Texture *texture = new sf::Texture();
 
-                texture->loadFromFile(ss.str().substr(1, ss.str().length() - 2));
+                if (!(texture->loadFromFile(ss.str().substr(1, ss.str().length() - 2))))
+                {
+                    std::cerr << "Failed to load Texture at " << ss.str() << std::endl;
+                    continue;
+                }
                 texture_map[ss.str().substr(1, ss.str().length() - 2)] = texture;
+                std::cout << "Loaded texture " << ss.str() << std::endl;
             }
         }
     }
@@ -108,7 +121,11 @@ void ResourceManager::preload_fonts(const std::string &folder, bool recursive)
             {
                 sf::Font *font = new sf::Font();
 
-                font->openFromFile(ss.str().substr(1, ss.str().length() - 2));
+                if (!(font->openFromFile(ss.str().substr(1, ss.str().length() - 2))))
+                {
+                    std::cerr << "Failed to load font at " << ss.str() << std::endl;
+                    continue;
+                }
                 font_map[ss.str().substr(1, ss.str().length() - 2)] = font;
             }
         }
@@ -123,7 +140,11 @@ void ResourceManager::preload_fonts(const std::string &folder, bool recursive)
             {
                 sf::Font *font = new sf::Font();
 
-                font->openFromFile(ss.str().substr(1, ss.str().length() - 2));
+                if (!(font->openFromFile(ss.str().substr(1, ss.str().length() - 2))))
+                {
+                    std::cerr << "Failed to load font at " << ss.str() << std::endl;
+                    continue;
+                }
                 font_map[ss.str().substr(1, ss.str().length() - 2)] = font;
             }
         }
@@ -170,7 +191,12 @@ void ResourceManager::preload_soundbuffers(const std::string &folder, bool recur
             {
                 sf::SoundBuffer *sound = new sf::SoundBuffer();
 
-                sound->loadFromFile(ss.str().substr(1, ss.str().length() - 2));
+                if (!(sound->loadFromFile(ss.str().substr(1, ss.str().length() - 2))))
+                {
+
+                    std::cerr << "Failed to load Sound at " << ss.str() << std::endl;
+                    continue;
+                }
                 sound_map[ss.str().substr(1, ss.str().length() - 2)] = sound;
             }
         }
@@ -185,7 +211,12 @@ void ResourceManager::preload_soundbuffers(const std::string &folder, bool recur
             {
                 sf::SoundBuffer *sound = new sf::SoundBuffer();
 
-                sound->loadFromFile(ss.str().substr(1, ss.str().length() - 2));
+                if (!(sound->loadFromFile(ss.str().substr(1, ss.str().length() - 2))))
+                {
+
+                    std::cerr << "Failed to load Sound at " << ss.str() << std::endl;
+                    continue;
+                }
                 sound_map[ss.str().substr(1, ss.str().length() - 2)] = sound;
             }
         }

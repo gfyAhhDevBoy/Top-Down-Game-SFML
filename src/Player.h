@@ -3,6 +3,9 @@
 
 #include "GameObject.h"
 
+#include <optional>
+#include <string>
+
 class Player : public GameObject
 {
   public:
@@ -11,10 +14,17 @@ class Player : public GameObject
 
     void update(float dt);
 
+    void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
+
+    ~Player()
+    {
+    }
+
   private:
     void animate();
 
-    sf::Sprite sprite;
+    char direction; // Up, Right, Down, Left
+    // sf::Sprite *sprite;
 };
 
 #endif

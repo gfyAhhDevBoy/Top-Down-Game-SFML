@@ -6,24 +6,29 @@
 class GameObject : public sf::Drawable
 {
   public:
-    GameObject(sf::Vector2f initial_pos, sf::Texture *text) : pos(initial_pos), tex(text)
+    GameObject(sf::Vector2f initial_pos, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*tex))
     {
         height = tex->getSize().y;
         width = tex->getSize().x;
+        this->sprite->setOrigin(sf::Vector2f((this->tex->getSize().x) / 2, (this->tex->getSize().y) / 2));
+        this->sprite->setScale(sf::Vector2f(3, 3));
+        this->sprite->setPosition(initial_pos);
     }
 
-    GameObject(float x, float y, sf::Texture *text) : pos(x, y), tex(text)
+    GameObject(float x, float y, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*tex))
     {
         height = tex->getSize().y;
         width = tex->getSize().x;
+        this->sprite->setOrigin(sf::Vector2f((this->tex->getSize().x) / 2, (this->tex->getSize().y) / 2));
+        this->sprite->setScale(sf::Vector2f(3, 3));
+        this->sprite->setPosition(sf::Vector2f(x, y));
     }
 
-    GameObject(float x, float y, int width, int height) : pos(x, y), width(width), height(height), tex(nullptr)
+    GameObject(float x, float y, int width, int height) : width(width), height(height), tex(nullptr)
     {
     }
 
-    GameObject(sf::Vector2f initial_pos, int width, int height)
-        : pos(initial_pos), width(width), height(height), tex(nullptr)
+    GameObject(sf::Vector2f initial_pos, int width, int height) : width(width), height(height), tex(nullptr)
     {
     }
 
@@ -36,14 +41,16 @@ class GameObject : public sf::Drawable
 
     sf::Vector2f get_pos() const;
 
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
-    virtual ~GameObject() = default;
+    virtual ~GameObject()
+    {
+    }
 
   protected:
     int height, width;
 
-    sf::Vector2f pos;
     sf::Texture *tex;
+    sf::Sprite *sprite;
 };
 #endif
