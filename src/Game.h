@@ -31,7 +31,8 @@ class Game
     void update();
     void render();
 
-    float deltatime;
+    sf::Clock deltaclock;
+    sf::Time deltatime;
 
     std::vector<GameObject *> gameobjs;
     Player *player;

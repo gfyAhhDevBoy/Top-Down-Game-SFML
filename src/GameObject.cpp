@@ -9,6 +9,7 @@ void GameObject::draw(sf::RenderTarget &target, sf::RenderStates states) const
     //     rectangle.setPosition(pos);
     //     target.draw(rectangle, states);
     // }
+
     target.draw(*(this->sprite), states);
 }
 

@@ -28,7 +28,6 @@ sf::Texture *ResourceManager::get_texture(const std::string &filepath)
         return nullptr;
     }
     std::cout << "Texture loaded at " << filepath << std::endl;
-    ;
 
     texture_map[filepath] = texture;
 

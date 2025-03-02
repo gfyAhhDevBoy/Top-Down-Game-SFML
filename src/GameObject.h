@@ -3,10 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <iostream>
+
 class GameObject : public sf::Drawable
 {
   public:
-    GameObject(sf::Vector2f initial_pos, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*tex))
+    GameObject(sf::Vector2f initial_pos, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*text))
     {
         height = tex->getSize().y;
         width = tex->getSize().x;
@@ -15,7 +17,7 @@ class GameObject : public sf::Drawable
         this->sprite->setPosition(initial_pos);
     }
 
-    GameObject(float x, float y, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*tex))
+    GameObject(float x, float y, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*text))
     {
         height = tex->getSize().y;
         width = tex->getSize().x;
