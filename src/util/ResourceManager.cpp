@@ -43,6 +43,7 @@ void ResourceManager::preload_textures(const std::string &folder, bool recursive
         {
             std::stringstream ss;
             ss << file;
+            std::cout << ss.str() << std::endl;
             if (contains(ss.str().substr(ss.str().length() - 4, 3), TEXTURE_FILE_EXTENSIONS))
             // if (contains(ss.str().substr(ss.str().find(".") + 1), TEXTURE_FILE_EXTENSIONS))
             {
