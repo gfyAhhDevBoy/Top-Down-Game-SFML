@@ -7,13 +7,11 @@ void Game::init()
 
     // To Do fix file paths on windows
     ResourceManager::preload_textures("res");
-    player = new Player(500, 500, 25, ResourceManager::get_texture("res/player.png"));
+    player = new Player(500, 500, 25, ResourceManager::get_texture("res/player.png"), &gameobjs);
     test = new GameObject(200, 200, ResourceManager::get_texture("res/idk.png"));
 
     // gameobjs.push_back(player);
     gameobjs.push_back(test);
-
-    camera = new Camera(player, gameobjs);
 }
 
 void Game::run()
@@ -29,7 +27,6 @@ void Game::run()
 void Game::update()
 {
     deltatime = deltaclock.restart();
-    camera->update(deltatime);
     player->update(deltatime);
 }
 

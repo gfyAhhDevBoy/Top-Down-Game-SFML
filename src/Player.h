@@ -5,14 +5,14 @@
 #include "util/Input.h"
 
 #include <cmath>
-#include <optional>
 #include <string>
+#include <vector>
 
 class Player : public GameObject
 {
   public:
     Player() = default;
-    Player(float x, float y, float speed, sf::Texture *text, bool movable = true);
+    Player(float x, float y, float speed, sf::Texture *text, std::vector<GameObject *> *objs, bool movable = true);
 
     void update(sf::Time dt);
 
@@ -35,6 +35,8 @@ class Player : public GameObject
 
     sf::Vector2f velocity;
     float velo_magnitude;
+
+    std::vector<GameObject *> *objs;
 
     float speed;
     bool can_move;

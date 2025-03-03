@@ -37,3 +37,8 @@ sf::Vector2f GameObject::get_pos() const
 {
     return this->sprite->getPosition();
 }
+
+bool GameObject::can_collide() const
+{
+    return collidable;
+}

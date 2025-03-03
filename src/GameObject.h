@@ -8,7 +8,8 @@
 class GameObject : public sf::Drawable
 {
   public:
-    GameObject(sf::Vector2f initial_pos, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*text))
+    GameObject(sf::Vector2f initial_pos, sf::Texture *text, bool can_collide = true)
+        : tex(text), sprite(new sf::Sprite(*text)), collidable(can_collide)
     {
         height = tex->getSize().y;
         width = tex->getSize().x;
@@ -17,7 +18,8 @@ class GameObject : public sf::Drawable
         this->sprite->setPosition(initial_pos);
     }
 
-    GameObject(float x, float y, sf::Texture *text) : tex(text), sprite(new sf::Sprite(*text))
+    GameObject(float x, float y, sf::Texture *text, bool can_collide = true)
+        : tex(text), sprite(new sf::Sprite(*text)), collidable(can_collide)
     {
         height = tex->getSize().y;
         width = tex->getSize().x;
@@ -42,12 +44,16 @@ class GameObject : public sf::Drawable
     void move(sf::Vector2f pos);
 
     sf::Vector2f get_pos() const;
+    bool can_collide() const;
 
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
     virtual ~GameObject()
     {
     }
+
+  private:
+    bool collidable;
 
   protected:
     int height, width;

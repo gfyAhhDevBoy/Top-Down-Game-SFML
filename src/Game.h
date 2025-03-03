@@ -39,8 +39,6 @@ class Game
     Player *player;
     GameObject *test;
 
-    Camera *camera;
-
     sf::RenderWindow *window;
 };
 #endif

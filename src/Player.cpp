@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(float x, float y, float nspeed, sf::Texture *text, bool movable)
+Player::Player(float x, float y, float nspeed, sf::Texture *text, std::vector<GameObject *> *objs, bool movable)
     : GameObject(x, y, text), velocity(0, 0), velo_magnitude(0), speed(nspeed / 100), can_move(movable), direction('r')
 {
     this->sprite = new sf::Sprite(*(this->tex));
@@ -11,26 +11,28 @@ Player::Player(float x, float y, float nspeed, sf::Texture *text, bool movable)
 
 void Player::update(sf::Time dt)
 {
-
-    if (Input::is_key_down(sf::Keyboard::Key::W))
+    if (can_move)
     {
-        direction = 'u';
-        velocity.y = -speed;
-    }
-    if (Input::is_key_down(sf::Keyboard::Key::A))
-    {
-        direction = 'l';
-        velocity.x = -speed;
-    }
-    if (Input::is_key_down(sf::Keyboard::Key::S))
-    {
-        direction = 'd';
-        velocity.y = speed;
-    }
-    if (Input::is_key_down(sf::Keyboard::Key::D))
-    {
-        direction = 'r';
-        velocity.x = speed;
+        if (Input::is_key_down(sf::Keyboard::Key::W))
+        {
+            direction = 'u';
+            velocity.y = -speed;
+        }
+        if (Input::is_key_down(sf::Keyboard::Key::A))
+        {
+            direction = 'l';
+            velocity.x = -speed;
+        }
+        if (Input::is_key_down(sf::Keyboard::Key::S))
+        {
+            direction = 'd';
+            velocity.y = speed;
+        }
+        if (Input::is_key_down(sf::Keyboard::Key::D))
+        {
+            direction = 'r';
+            velocity.x = speed;
+        }
     }
 
     if (direction != 'r' && direction != 'u' && direction != 'l' && direction != 'd')
