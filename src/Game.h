@@ -10,6 +10,7 @@
 #include "util/Input.h"
 #include "util/ResourceManager.h"
 
+#include "Camera.h"
 #include "GameObject.h"
 #include "Player.h"
 
@@ -37,6 +38,8 @@ class Game
     std::vector<GameObject *> gameobjs;
     Player *player;
     GameObject *test;
+
+    Camera *camera;
 
     sf::RenderWindow *window;
 };

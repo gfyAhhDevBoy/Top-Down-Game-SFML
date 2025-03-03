@@ -10,8 +10,10 @@ void Game::init()
     player = new Player(500, 500, 25, ResourceManager::get_texture("res/player.png"));
     test = new GameObject(200, 200, ResourceManager::get_texture("res/idk.png"));
 
-    gameobjs.push_back(player);
+    // gameobjs.push_back(player);
     gameobjs.push_back(test);
+
+    camera = new Camera(player, gameobjs);
 }
 
 void Game::run()
@@ -27,6 +29,7 @@ void Game::run()
 void Game::update()
 {
     deltatime = deltaclock.restart();
+    camera->update(deltatime);
     player->update(deltatime);
 }
 
@@ -54,6 +57,8 @@ void Game::render()
     {
         e->draw(*(this->window));
     }
+
+    player->draw(*(this->window));
 
     window->display();
 }
