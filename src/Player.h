@@ -8,13 +8,22 @@
 #include <string>
 #include <vector>
 
+enum CollisionState
+{
+    NONE,
+    UP,
+    LEFT,
+    DOWN,
+    RIGHT
+};
+
 class Player : public GameObject
 {
   public:
     Player() = default;
-    Player(float x, float y, float speed, sf::Texture *text, std::vector<GameObject *> *objs, bool movable = true);
+    Player(float x, float y, float speed, sf::Texture *text, bool movable = true);
 
-    void update(sf::Time dt);
+    void update(sf::Time dt, std::vector<GameObject *> objs);
 
     void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
@@ -30,13 +39,12 @@ class Player : public GameObject
 
   private:
     void animate();
+    CollisionState collision(std::vector<GameObject *> objs);
 
     sf::Vector2f normalized(sf::Vector2f vec);
 
     sf::Vector2f velocity;
     float velo_magnitude;
-
-    std::vector<GameObject *> *objs;
 
     float speed;
     bool can_move;

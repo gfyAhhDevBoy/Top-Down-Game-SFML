@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(float x, float y, float nspeed, sf::Texture *text, std::vector<GameObject *> *objs, bool movable)
+Player::Player(float x, float y, float nspeed, sf::Texture *text, bool movable)
     : GameObject(x, y, text), velocity(0, 0), velo_magnitude(0), speed(nspeed / 100), can_move(movable), direction('r')
 {
     this->sprite = new sf::Sprite(*(this->tex));
@@ -9,7 +9,7 @@ Player::Player(float x, float y, float nspeed, sf::Texture *text, std::vector<Ga
     this->sprite->setPosition(sf::Vector2f(x, y));
 }
 
-void Player::update(sf::Time dt)
+void Player::update(sf::Time dt, std::vector<GameObject *> objs)
 {
     if (can_move)
     {
@@ -81,4 +81,21 @@ sf::Vector2f Player::normalized(sf::Vector2f vec)
     {
         return sf::Vector2f();
     }
+}
+
+CollisionState Player::collision(std::vector<GameObject *> objs)
+{
+    if (objs.empty())
+    {
+        std::cout << "empty\n";
+        return NONE;
+    }
+
+    for (auto &e : objs)
+    {
+        if (this->sprite->getGlobalBounds().findIntersection(e->get_sprite()->getGlobalBounds()))
+        {
+        }
+    }
+    return NONE;
 }

@@ -45,6 +45,7 @@ class GameObject : public sf::Drawable
 
     sf::Vector2f get_pos() const;
     bool can_collide() const;
+    sf::Sprite *get_sprite() const;
 
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
 

@@ -27,7 +27,7 @@ void Game::run()
 void Game::update()
 {
     deltatime = deltaclock.restart();
-    player->update(deltatime);
+    player->update(deltatime, gameobjs);
 }
 
 void Game::process_events()

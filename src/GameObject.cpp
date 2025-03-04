@@ -42,3 +42,8 @@ bool GameObject::can_collide() const
 {
     return collidable;
 }
+
+sf::Sprite *GameObject::get_sprite() const
+{
+    return sprite;
+}
