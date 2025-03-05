@@ -2,13 +2,15 @@
 
 void GameObject::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    // if (!tex)
-    // {
-    //     sf::RectangleShape rectangle(sf::Vector2f(width, height));
-    //     rectangle.setFillColor(sf::Color::White);
-    //     rectangle.setPosition(pos);
-    //     target.draw(rectangle, states);
-    // }
+    if (hitbox)
+    {
+        sf::RectangleShape rect(sf::Vector2f(sprite->getGlobalBounds().size.x, sprite->getGlobalBounds().size.y));
+        rect.setPosition(sf::Vector2f(sprite->getGlobalBounds().position.x, sprite->getGlobalBounds().position.y));
+        rect.setFillColor(sf::Color::Transparent);
+        rect.setOutlineColor(sf::Color::Red);
+        rect.setOutlineThickness(2.0f);
+        target.draw(rect);
+    }
 
     target.draw(*(this->sprite), states);
 }
@@ -46,4 +48,9 @@ bool GameObject::can_collide() const
 sf::Sprite *GameObject::get_sprite() const
 {
     return sprite;
+}
+
+void GameObject::draw_hitbox(bool b)
+{
+    hitbox = b;
 }

@@ -1,12 +1,13 @@
 #include "Player.h"
 
-Player::Player(float x, float y, float nspeed, sf::Texture *text, bool movable)
-    : GameObject(x, y, text), velocity(0, 0), velo_magnitude(0), speed(nspeed / 100), can_move(movable), direction('r')
+Player::Player(sf::Vector2f initial_pos, float nspeed, sf::Texture *text, bool movable)
+    : GameObject(initial_pos, text), velocity(0, 0), velo_magnitude(0), speed(nspeed / 100), can_move(movable),
+      direction('r')
 {
     this->sprite = new sf::Sprite(*(this->tex));
     this->sprite->setOrigin(sf::Vector2f((this->tex->getSize().x) / 2, (this->tex->getSize().y) / 2));
     this->sprite->setScale(sf::Vector2f(3, 3));
-    this->sprite->setPosition(sf::Vector2f(x, y));
+    this->sprite->setPosition(initial_pos);
 }
 
 void Player::update(sf::Time dt, std::vector<GameObject *> objs)
@@ -38,7 +39,13 @@ void Player::update(sf::Time dt, std::vector<GameObject *> objs)
     if (direction != 'r' && direction != 'u' && direction != 'l' && direction != 'd')
         direction = 'r';
 
-    move(normalized(velocity) * static_cast<float>(dt.asMilliseconds()));
+    sf::Vector2f movement = normalized(velocity) * static_cast<float>(dt.asMilliseconds());
+
+    // Check for collisions before moving
+    if (!will_collide(movement, objs))
+    {
+        move(movement);
+    }
 
     velocity.x = 0;
     velocity.y = 0;
@@ -46,6 +53,15 @@ void Player::update(sf::Time dt, std::vector<GameObject *> objs)
 
 void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
+    if (hitbox)
+    {
+        sf::RectangleShape rect(sf::Vector2f(sprite->getGlobalBounds().size.x, sprite->getGlobalBounds().size.y));
+        rect.setPosition(sf::Vector2f(sprite->getGlobalBounds().position.x, sprite->getGlobalBounds().position.y));
+        rect.setFillColor(sf::Color::Transparent);
+        rect.setOutlineColor(sf::Color::Red);
+        rect.setOutlineThickness(2.0f);
+        target.draw(rect);
+    }
 
     target.draw(*(this->sprite), states);
 }
@@ -83,19 +99,18 @@ sf::Vector2f Player::normalized(sf::Vector2f vec)
     }
 }
 
-CollisionState Player::collision(std::vector<GameObject *> objs)
+bool Player::will_collide(sf::Vector2f movement, const std::vector<GameObject *> &objs)
 {
-    if (objs.empty())
-    {
-        std::cout << "empty\n";
-        return NONE;
-    }
+    sf::FloatRect future_bounds = this->sprite->getGlobalBounds();
+    future_bounds.position.x += movement.x;
+    future_bounds.position.y += movement.y;
 
-    for (auto &e : objs)
+    for (const auto &e : objs)
     {
-        if (this->sprite->getGlobalBounds().findIntersection(e->get_sprite()->getGlobalBounds()))
+        if (future_bounds.findIntersection(e->get_sprite()->getGlobalBounds()))
         {
+            return true;
         }
     }
-    return NONE;
+    return false;
 }

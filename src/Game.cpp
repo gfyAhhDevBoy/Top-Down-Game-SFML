@@ -7,8 +7,10 @@ void Game::init()
 
     // To Do fix file paths on windows
     ResourceManager::preload_textures("res");
-    player = new Player(500, 500, 25, ResourceManager::get_texture("res/player.png"), &gameobjs);
-    test = new GameObject(200, 200, ResourceManager::get_texture("res/idk.png"));
+    player = new Player(sf::Vector2f(500, 500), 25, ResourceManager::get_texture("res/player.png"), &gameobjs);
+    test = new GameObject(sf::Vector2f(200, 200), ResourceManager::get_texture("res/idk.png"));
+    test->draw_hitbox(true);
+    player->draw_hitbox(true);
 
     // gameobjs.push_back(player);
     gameobjs.push_back(test);
@@ -50,8 +52,9 @@ void Game::render()
 {
     window->clear(sf::Color::Black);
 
-    for (auto e : gameobjs)
+    for (auto &e : gameobjs)
     {
+
         e->draw(*(this->window));
     }
 

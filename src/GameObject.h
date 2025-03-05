@@ -9,23 +9,14 @@ class GameObject : public sf::Drawable
 {
   public:
     GameObject(sf::Vector2f initial_pos, sf::Texture *text, bool can_collide = true)
-        : tex(text), sprite(new sf::Sprite(*text)), collidable(can_collide)
+        : tex(text), sprite(new sf::Sprite(*text)), collidable(can_collide), hitbox(false)
     {
-        height = tex->getSize().y;
-        width = tex->getSize().x;
+        this->height = tex->getSize().x;
+        this->width = tex->getSize().y;
         this->sprite->setOrigin(sf::Vector2f((this->tex->getSize().x) / 2, (this->tex->getSize().y) / 2));
         this->sprite->setScale(sf::Vector2f(3, 3));
         this->sprite->setPosition(initial_pos);
-    }
-
-    GameObject(float x, float y, sf::Texture *text, bool can_collide = true)
-        : tex(text), sprite(new sf::Sprite(*text)), collidable(can_collide)
-    {
-        height = tex->getSize().y;
-        width = tex->getSize().x;
-        this->sprite->setOrigin(sf::Vector2f((this->tex->getSize().x) / 2, (this->tex->getSize().y) / 2));
-        this->sprite->setScale(sf::Vector2f(3, 3));
-        this->sprite->setPosition(sf::Vector2f(x, y));
+        std::cout << hitbox << std::endl;
     }
 
     GameObject(float x, float y, int width, int height) : width(width), height(height), tex(nullptr)
@@ -47,6 +38,8 @@ class GameObject : public sf::Drawable
     bool can_collide() const;
     sf::Sprite *get_sprite() const;
 
+    void draw_hitbox(bool b);
+
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
     virtual ~GameObject()
@@ -58,6 +51,7 @@ class GameObject : public sf::Drawable
 
   protected:
     int height, width;
+    bool hitbox;
 
     sf::Texture *tex;
     sf::Sprite *sprite;

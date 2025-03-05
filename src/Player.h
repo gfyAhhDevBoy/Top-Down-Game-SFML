@@ -21,7 +21,7 @@ class Player : public GameObject
 {
   public:
     Player() = default;
-    Player(float x, float y, float speed, sf::Texture *text, bool movable = true);
+    Player(sf::Vector2f initial_pos, float speed, sf::Texture *text, bool movable = true);
 
     void update(sf::Time dt, std::vector<GameObject *> objs);
 
@@ -39,7 +39,7 @@ class Player : public GameObject
 
   private:
     void animate();
-    CollisionState collision(std::vector<GameObject *> objs);
+    bool will_collide(sf::Vector2f movement, const std::vector<GameObject *> &objs);
 
     sf::Vector2f normalized(sf::Vector2f vec);
 
