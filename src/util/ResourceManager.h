@@ -14,21 +14,21 @@
 class ResourceManager
 {
   public:
-    static sf::Texture *get_texture(const std::string &filepath);
-    inline static size_t get_texture_count();
-    static void preload_textures(const std::string &folder, bool recursive = true);
+    static sf::Texture *getTexture(const std::string &filepath);
+    inline static size_t getTextureCount();
+    static void preloadTextures(const std::string &folder, bool recursive = true);
 
-    static sf::SoundBuffer *get_soundbuffer(const std::string &filepath);
-    inline static size_t get_sound_count();
-    static void preload_soundbuffers(const std::string &folder, bool recursive = true);
+    static sf::SoundBuffer *getSoundbuffer(const std::string &filepath);
+    inline static size_t getSoundCount();
+    static void preloadSoundbuffers(const std::string &folder, bool recursive = true);
 
-    static sf::Font *get_font(const std::string &filepath);
-    inline static size_t get_font_count();
-    static void preload_fonts(const std::string &folder, bool recursive = true);
+    static sf::Font *getFont(const std::string &filepath);
+    inline static size_t getFontCount();
+    static void preloadFonts(const std::string &folder, bool recursive = true);
 
-    inline static void clear_textures();
-    inline static void clear_fonts();
-    inline static void clear_sounds();
+    inline static void clearTextures();
+    inline static void clearFonts();
+    inline static void clearSounds();
 
     ResourceManager() = delete;
 

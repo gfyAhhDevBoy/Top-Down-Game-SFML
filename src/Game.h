@@ -10,7 +10,6 @@
 #include "util/Input.h"
 #include "util/ResourceManager.h"
 
-#include "Camera.h"
 #include "GameObject.h"
 #include "Player.h"
 
@@ -22,13 +21,13 @@ class Game
     void init();
     void run();
 
-    inline bool is_open()
+    inline bool isOpen()
     {
         return window->isOpen();
     };
 
   private:
-    void process_events();
+    void processEvents();
     void update();
     void render();
 

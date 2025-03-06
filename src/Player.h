@@ -27,11 +27,11 @@ class Player : public GameObject
 
     void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
-    void set_speed(float s);
-    float get_speed() const;
+    void setSpeed(float s);
+    float getSpeed() const;
 
-    void set_movable(bool mov);
-    bool is_movable() const;
+    void setMovable(bool mov);
+    bool isMovable() const;
 
     ~Player()
     {
@@ -39,7 +39,7 @@ class Player : public GameObject
 
   private:
     void animate();
-    bool will_collide(sf::Vector2f movement, const std::vector<GameObject *> &objs);
+    bool willCollide(sf::Vector2f movement, const std::vector<GameObject *> &objs);
 
     sf::Vector2f normalized(sf::Vector2f vec);
 

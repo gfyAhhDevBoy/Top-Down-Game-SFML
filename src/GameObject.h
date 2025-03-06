@@ -27,18 +27,18 @@ class GameObject : public sf::Drawable
     {
     }
 
-    void set_pos(float x, float y);
-    void set_pos(sf::Vector2f pos);
-    void set_x(float x);
-    void set_y(float y);
+    void setPos(float x, float y);
+    void setPos(sf::Vector2f pos);
+    void setX(float x);
+    void setY(float y);
     void move(float x, float y);
     void move(sf::Vector2f pos);
 
-    sf::Vector2f get_pos() const;
-    bool can_collide() const;
-    sf::Sprite *get_sprite() const;
+    sf::Vector2f getPos() const;
+    bool canCollide() const;
+    sf::Sprite *getSprite() const;
 
-    void draw_hitbox(bool b);
+    void drawHitbox(bool b);
 
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states = sf::RenderStates::Default) const override;
 
