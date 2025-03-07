@@ -1,5 +1,4 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -55,4 +54,3 @@ class GameObject : public sf::Drawable
     sf::Texture *tex;
     sf::Sprite *sprite;
 };
-#endif

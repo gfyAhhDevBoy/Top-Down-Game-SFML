@@ -1,5 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 #include "GameObject.h"
 #include "util/Input.h"
@@ -52,5 +51,3 @@ class Player : public GameObject
     char direction; // Up, Right, Down, Left
     // sf::Sprite *sprite;
 };
-
-#endif

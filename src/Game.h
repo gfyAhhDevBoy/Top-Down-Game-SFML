@@ -1,5 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -40,4 +39,3 @@ class Game
 
     sf::RenderWindow *window;
 };
-#endif

@@ -1,5 +1,4 @@
-#ifndef RESOURCE_H
-#define RESOURCE_H
+#pragma once
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
@@ -43,5 +42,3 @@ class ResourceManager
 
     static bool contains(std::string str, std::vector<std::string> vec);
 };
-
-#endif

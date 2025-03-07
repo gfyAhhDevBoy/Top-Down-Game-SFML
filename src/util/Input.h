@@ -1,5 +1,5 @@
-#ifndef INPUT_H
-#define INPUT_H
+#pragma once
+
 #include <SFML/Graphics.hpp>
 
 class Input
@@ -20,4 +20,3 @@ class Input
 
     Input() = delete;
 };
-#endif
