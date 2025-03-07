@@ -15,12 +15,12 @@ void GameObject::draw(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(*(this->sprite), states);
 }
 
-void GameObject::set_pos(float x, float y)
+void GameObject::setPos(float x, float y)
 {
     this->sprite->setPosition(sf::Vector2f(x, y));
 }
 
-void GameObject::set_pos(sf::Vector2f pos)
+void GameObject::setPos(sf::Vector2f pos)
 {
     this->sprite->setPosition(pos);
 }
@@ -35,22 +35,22 @@ void GameObject::move(sf::Vector2f pos)
     this->sprite->move(pos);
 }
 
-sf::Vector2f GameObject::get_pos() const
+sf::Vector2f GameObject::getPos() const
 {
     return this->sprite->getPosition();
 }
 
-bool GameObject::can_collide() const
+bool GameObject::canCollide() const
 {
     return collidable;
 }
 
-sf::Sprite *GameObject::get_sprite() const
+sf::Sprite *GameObject::getSprite() const
 {
     return sprite;
 }
 
-void GameObject::draw_hitbox(bool b)
+void GameObject::drawHitbox(bool b)
 {
     hitbox = b;
 }

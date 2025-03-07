@@ -14,22 +14,22 @@ void Player::update(sf::Time dt, std::vector<GameObject *> objs)
 {
     if (can_move)
     {
-        if (Input::is_key_down(sf::Keyboard::Key::W))
+        if (Input::isKeyDown(sf::Keyboard::Key::W))
         {
             direction = 'u';
             velocity.y = -speed;
         }
-        if (Input::is_key_down(sf::Keyboard::Key::A))
+        if (Input::isKeyDown(sf::Keyboard::Key::A))
         {
             direction = 'l';
             velocity.x = -speed;
         }
-        if (Input::is_key_down(sf::Keyboard::Key::S))
+        if (Input::isKeyDown(sf::Keyboard::Key::S))
         {
             direction = 'd';
             velocity.y = speed;
         }
-        if (Input::is_key_down(sf::Keyboard::Key::D))
+        if (Input::isKeyDown(sf::Keyboard::Key::D))
         {
             direction = 'r';
             velocity.x = speed;
@@ -42,7 +42,7 @@ void Player::update(sf::Time dt, std::vector<GameObject *> objs)
     sf::Vector2f movement = normalized(velocity) * static_cast<float>(dt.asMilliseconds());
 
     // Check for collisions before moving
-    if (!will_collide(movement, objs))
+    if (!willCollide(movement, objs))
     {
         move(movement);
     }
@@ -66,22 +66,22 @@ void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(*(this->sprite), states);
 }
 
-void Player::set_speed(float s)
+void Player::setSpeed(float s)
 {
     this->speed = s;
 }
 
-float Player::get_speed() const
+float Player::getSpeed() const
 {
     return this->speed;
 }
 
-void Player::set_movable(bool mov)
+void Player::setMovable(bool mov)
 {
     this->can_move = mov;
 }
 
-bool Player::is_movable() const
+bool Player::isMovable() const
 {
     return this->can_move;
 }
@@ -99,7 +99,7 @@ sf::Vector2f Player::normalized(sf::Vector2f vec)
     }
 }
 
-bool Player::will_collide(sf::Vector2f movement, const std::vector<GameObject *> &objs)
+bool Player::willCollide(sf::Vector2f movement, const std::vector<GameObject *> &objs)
 {
     sf::FloatRect future_bounds = this->sprite->getGlobalBounds();
     future_bounds.position.x += movement.x;
@@ -107,7 +107,7 @@ bool Player::will_collide(sf::Vector2f movement, const std::vector<GameObject *>
 
     for (const auto &e : objs)
     {
-        if (future_bounds.findIntersection(e->get_sprite()->getGlobalBounds()))
+        if (future_bounds.findIntersection(e->getSprite()->getGlobalBounds()))
         {
             return true;
         }

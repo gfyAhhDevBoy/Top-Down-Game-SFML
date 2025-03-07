@@ -8,7 +8,7 @@ const std::vector<std::string> ResourceManager::TEXTURE_FILE_EXTENSIONS = {"png"
 const std::vector<std::string> ResourceManager::FONT_FILE_EXTENSIONS = {"ttf"};
 const std::vector<std::string> ResourceManager::SOUND_FILE_EXTENSIONS = {"wav"};
 
-sf::Texture *ResourceManager::get_texture(const std::string &filepath)
+sf::Texture *ResourceManager::getTexture(const std::string &filepath)
 {
     // Check if already present
     for (auto b = texture_map.begin(); b != texture_map.end(); ++b)
@@ -34,7 +34,7 @@ sf::Texture *ResourceManager::get_texture(const std::string &filepath)
     return texture_map[filepath];
 }
 
-void ResourceManager::preload_textures(const std::string &folder, bool recursive)
+void ResourceManager::preloadTextures(const std::string &folder, bool recursive)
 {
     if (recursive)
     {
@@ -81,12 +81,12 @@ void ResourceManager::preload_textures(const std::string &folder, bool recursive
     }
 }
 
-size_t ResourceManager::get_texture_count()
+size_t ResourceManager::getTextureCount()
 {
     return texture_map.size();
 }
 
-sf::Font *ResourceManager::get_font(const std::string &filepath)
+sf::Font *ResourceManager::getFont(const std::string &filepath)
 {
     for (auto b = font_map.begin(); b != font_map.end(); ++b)
     {
@@ -109,7 +109,7 @@ sf::Font *ResourceManager::get_font(const std::string &filepath)
     return font_map[filepath];
 }
 
-void ResourceManager::preload_fonts(const std::string &folder, bool recursive)
+void ResourceManager::preloadFonts(const std::string &folder, bool recursive)
 {
     if (recursive)
     {
@@ -151,12 +151,12 @@ void ResourceManager::preload_fonts(const std::string &folder, bool recursive)
     }
 }
 
-size_t ResourceManager::get_font_count()
+size_t ResourceManager::getFontCount()
 {
     return font_map.size();
 }
 
-sf::SoundBuffer *ResourceManager::get_soundbuffer(const std::string &filepath)
+sf::SoundBuffer *ResourceManager::getSoundbuffer(const std::string &filepath)
 {
     for (auto b = sound_map.begin(); b != sound_map.end(); ++b)
     {
@@ -179,7 +179,7 @@ sf::SoundBuffer *ResourceManager::get_soundbuffer(const std::string &filepath)
     return sound_map[filepath];
 }
 
-void ResourceManager::preload_soundbuffers(const std::string &folder, bool recursive)
+void ResourceManager::preloadSoundbuffers(const std::string &folder, bool recursive)
 {
     if (recursive)
     {
@@ -223,12 +223,12 @@ void ResourceManager::preload_soundbuffers(const std::string &folder, bool recur
     }
 }
 
-size_t ResourceManager::get_sound_count()
+size_t ResourceManager::getSoundCount()
 {
     return sound_map.size();
 }
 
-void ResourceManager::clear_fonts()
+void ResourceManager::clearFonts()
 {
     for (auto e : font_map)
     {
@@ -238,7 +238,7 @@ void ResourceManager::clear_fonts()
     font_map.clear();
 }
 
-void ResourceManager::clear_sounds()
+void ResourceManager::clearSounds()
 {
     for (auto e : sound_map)
     {
@@ -248,7 +248,7 @@ void ResourceManager::clear_sounds()
     sound_map.clear();
 }
 
-void ResourceManager::clear_textures()
+void ResourceManager::clearTextures()
 {
     for (auto e : texture_map)
     {

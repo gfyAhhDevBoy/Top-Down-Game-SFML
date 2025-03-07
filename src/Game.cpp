@@ -6,11 +6,11 @@ void Game::init()
     window->setFramerateLimit(60);
 
     // To Do fix file paths on windows
-    ResourceManager::preload_textures("res");
-    player = new Player(sf::Vector2f(500, 500), 25, ResourceManager::get_texture("res/player.png"), &gameobjs);
-    test = new GameObject(sf::Vector2f(200, 200), ResourceManager::get_texture("res/idk.png"));
-    test->draw_hitbox(true);
-    player->draw_hitbox(true);
+    ResourceManager::preloadTextures("res");
+    player = new Player(sf::Vector2f(500, 500), 25, ResourceManager::getTexture("res/player.png"), &gameobjs);
+    test = new GameObject(sf::Vector2f(200, 200), ResourceManager::getTexture("res/idk.png"));
+    test->drawHitbox(true);
+    player->drawHitbox(true);
 
     // gameobjs.push_back(player);
     gameobjs.push_back(test);
@@ -20,7 +20,7 @@ void Game::run()
 {
     while (window->isOpen())
     {
-        process_events();
+        processEvents();
         update();
         render();
     }
@@ -32,7 +32,7 @@ void Game::update()
     player->update(deltatime, gameobjs);
 }
 
-void Game::process_events()
+void Game::processEvents()
 {
     while (const std::optional event = window->pollEvent())
     {
