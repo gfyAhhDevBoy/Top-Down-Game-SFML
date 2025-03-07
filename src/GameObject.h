@@ -16,7 +16,6 @@ class GameObject : public sf::Drawable
         this->sprite->setOrigin(sf::Vector2f((this->tex->getSize().x) / 2, (this->tex->getSize().y) / 2));
         this->sprite->setScale(sf::Vector2f(3, 3));
         this->sprite->setPosition(initial_pos);
-        std::cout << hitbox << std::endl;
     }
 
     GameObject(float x, float y, int width, int height) : width(width), height(height), tex(nullptr)
