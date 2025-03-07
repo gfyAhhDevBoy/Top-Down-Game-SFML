@@ -12,7 +12,7 @@ void Game::init()
     test->drawHitbox(true);
     player->drawHitbox(true);
 
-    level = new Level(ResourceManager::getTexture("res/world/grass.png"), 32);
+    level = new Level(ResourceManager::getTexture("res/world/grass.png"), 32, 25, 20);
 
     // gameobjs.push_back(player);
     gameobjs.push_back(test);

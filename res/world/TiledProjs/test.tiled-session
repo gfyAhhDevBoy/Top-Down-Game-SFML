@@ -1,0 +1,21 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+    },
+    "last.imagePath": "/home/tim/Dev/C++/Top-Down-Game-SFML/res/world",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 25,
+    "openFiles": [
+    ],
+    "project": "test.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
