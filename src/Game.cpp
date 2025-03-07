@@ -2,7 +2,7 @@
 
 void Game::init()
 {
-    window = new sf::RenderWindow(sf::VideoMode({800u, 600u}), "Game", sf::Style::Resize | sf::Style::Close);
+    window = new sf::RenderWindow(sf::VideoMode({800u, 640u}), "Game", sf::Style::Resize | sf::Style::Close);
     window->setFramerateLimit(60);
 
     // To Do fix file paths on windows
@@ -11,6 +11,8 @@ void Game::init()
     test = new GameObject(sf::Vector2f(200, 200), ResourceManager::getTexture("res/idk.png"));
     test->drawHitbox(true);
     player->drawHitbox(true);
+
+    level = new Level(ResourceManager::getTexture("res/world/grass.png"), 32);
 
     // gameobjs.push_back(player);
     gameobjs.push_back(test);
@@ -51,6 +53,8 @@ void Game::processEvents()
 void Game::render()
 {
     window->clear(sf::Color::Black);
+
+    level->draw(*(this->window));
 
     for (auto &e : gameobjs)
     {

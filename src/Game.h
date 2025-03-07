@@ -10,6 +10,7 @@
 #include "util/ResourceManager.h"
 
 #include "GameObject.h"
+#include "Level.h"
 #include "Player.h"
 
 class Game
@@ -36,6 +37,7 @@ class Game
     std::vector<GameObject *> gameobjs;
     Player *player;
     GameObject *test;
+    Level *level;
 
     sf::RenderWindow *window;
 };

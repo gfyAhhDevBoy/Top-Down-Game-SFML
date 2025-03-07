@@ -7,15 +7,6 @@
 #include <string>
 #include <vector>
 
-enum CollisionState
-{
-    NONE,
-    UP,
-    LEFT,
-    DOWN,
-    RIGHT
-};
-
 class Player : public GameObject
 {
   public:
